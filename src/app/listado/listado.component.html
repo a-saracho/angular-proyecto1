@@ -1,3 +1,4 @@
+<button routerLink="/formulario">Crear cliente</button>
 <table>
     <tr>
         <th>ID</th>
@@ -5,6 +6,7 @@
         <th>Apellido</th>
         <th>Fecha Nacimiento</th>
         <th>CP</th>
+        <th></th>
     </tr>
     <tr *ngFor="let cliente of clientes">
         <td>{{cliente.id}}</td>
@@ -12,5 +14,9 @@
         <td>{{cliente.apellido}}</td>
         <td>{{cliente.fecha_nacimiento | date:'dd/MM/yyyy'}}</td>
         <td>{{cliente.cp}}</td>
+        <td>
+            <button routerLink="/formulario">E</button>
+            <button>B</button>
+        </td>
     </tr>
 </table>
