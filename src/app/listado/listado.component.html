@@ -6,18 +6,11 @@
         <th>Fecha Nacimiento</th>
         <th>CP</th>
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Luisito</td>
-        <td>Luisitez</td>
-        <td>15/10/1980</td>
-        <td>48001</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Paquito</td>
-        <td>Paquitez</td>
-        <td>20/02/1990</td>
-        <td>48010</td>
+    <tr *ngFor="let cliente of clientes">
+        <td>{{cliente.id}}</td>
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.fecha_nacimiento}}</td>
+        <td>{{cliente.cp}}</td>
     </tr>
 </table>
