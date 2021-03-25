@@ -1,3 +1,4 @@
+import { Cliente } from './../cliente';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-  clientes = [
-    { id: 1, nombre: 'Luisito', apellido: 'Luisitez', fecha_nacimiento: '15/10/1980', cp: '48001' },
-    { id: 2, nombre: 'Paquito', apellido: 'Paquitez', fecha_nacimiento: '20/02/1990', cp: '48010' },
+  clientes: Cliente[] = [
+    { id: 1, nombre: 'Luisito', apellido: 'Luisitez', fecha_nacimiento: new Date('1980/10/15'), cp: 48001 },
+    { id: 2, nombre: 'Paquito', apellido: 'Paquitez', fecha_nacimiento: new Date('1990/02/20'), cp: 48010 },
   ];
 
   constructor() { }
