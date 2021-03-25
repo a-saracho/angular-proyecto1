@@ -1,0 +1,9 @@
+table
+{
+    min-width: 500px;
+}
+th
+{
+    background-color: navy;
+    color: white;
+}
