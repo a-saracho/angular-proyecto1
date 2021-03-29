@@ -1,20 +1,22 @@
-<div>
-    <label for="cliente-nombre">Nombre: </label>
-    <input id="cliente-nombre" placeholder="Nombre">
-</div>
-<div>
-    <label for="cliente-apellido">Apellido: </label>
-    <input id="cliente-apellido" placeholder="Apellido">
-</div>
-<div>
-    <label for="cliente-nombre">Fecha de nacimiento: </label>
-    <input id="cliente-nombre" placeholder="dd/mm/yyyy">
-</div>
-<div>
-    <label for="cliente-nombre">Código postal: </label>
-    <input id="cliente-nombre" placeholder="Código postal">
-</div>
-<div>
-    <button>Guardar</button>
-    <button routerLink="/listado">Volver</button>
-</div>
+<form>
+    <div>
+        <label for="nombre">Nombre </label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
+    </div>
+    <div>
+        <label for="apellido">Apellido </label>
+        <input type="text" id="apellido" name="apellido" placeholder="Apellido" [(ngModel)]="cliente.apellido">
+    </div>
+    <div>
+        <label for="fecha_nacimiento">Fecha de nacimiento </label>
+        <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/yyyy" [ngModel]="cliente.fecha_nacimiento | date:'dd/MM/yyyy'">
+    </div>
+    <div>
+        <label for="cp">Código postal </label>
+        <input type="number" min="0" id="cp" name="cp" placeholder="Código postal" [(ngModel)]="cliente.cp">
+    </div>
+    <div>
+        <button>Guardar</button>
+        <button routerLink="/listado">Volver</button>
+    </div>
+</form>

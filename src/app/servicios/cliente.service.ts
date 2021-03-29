@@ -14,7 +14,7 @@ export class ClienteService {
     { id: 2, nombre: 'Paquito', apellido: 'Paquitez', fecha_nacimiento: new Date('1990/02/20'), cp: 48010 },
   ];
 
-  private clientesUrl = 'http://localhost:3000/clientes';
+  private clientesUrl = 'http://localhost:3000/clientes/';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -22,8 +22,12 @@ export class ClienteService {
   constructor( private http: HttpClient ) {
   }
 
-  obtenerClientes(): Observable<Cliente[]> {
+  getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.clientesUrl);
+  }
+
+  getCliente(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(this.clientesUrl + id);
   }
 
 
