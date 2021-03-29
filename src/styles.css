@@ -3,3 +3,12 @@
 {
     font-family: sans-serif;
 }
+
+button {
+    padding: 5px 8px;
+    color: #fff;
+    background-color: dimgrey;
+    border: none;
+    font-weight: bold;
+    margin: 2px;
+}

@@ -8,7 +8,7 @@
         <th>CP</th>
         <th></th>
     </tr>
-    <tr *ngFor="let cliente of clientes">
+    <tr *ngFor="let cliente of clientes; let i = index" [ngClass]="{even: i%2 == 0, odd: i%2 == 1 }">
         <td>{{cliente.id}}</td>
         <td>{{cliente.nombre}}</td>
         <td>{{cliente.apellido}}</td>
