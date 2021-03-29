@@ -25,4 +25,12 @@ export class ClienteService {
   obtenerClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.clientesUrl);
   }
+
+
+  deleteCliente(cliente: number | Cliente): Observable<Cliente> {
+    const id = typeof cliente === 'number' ? cliente : cliente.id;
+    const url = `${this.clientesUrl}/${id}`;
+
+    return this.http.delete<Cliente>(url, this.httpOptions);
+  }
 }

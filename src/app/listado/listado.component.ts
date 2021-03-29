@@ -19,4 +19,19 @@ export class ListadoComponent implements OnInit {
     );
   }
 
+  private cargarListado(): void {
+    this.clienteService.obtenerClientes().subscribe(
+      clientes => this.clientes = clientes
+    );
+  }
+
+  private delete(cliente: Cliente): void {
+    if (confirm('¿Estás seguro de querer borrar el cliente con Id ' + cliente.id + '?')) {
+      this.clienteService.deleteCliente(cliente.id).subscribe(
+        // this.cargarListado.bind(this)
+        _ => this.cargarListado()
+      );
+    }
+  }
+
 }
