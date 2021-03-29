@@ -14,13 +14,13 @@ export class ListadoComponent implements OnInit {
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    this.clienteService.obtenerClientes().subscribe(
+    this.clienteService.getClientes().subscribe(
       (clientes: Cliente[]) => this.clientes = clientes
     );
   }
 
   private cargarListado(): void {
-    this.clienteService.obtenerClientes().subscribe(
+    this.clienteService.getClientes().subscribe(
       clientes => this.clientes = clientes
     );
   }

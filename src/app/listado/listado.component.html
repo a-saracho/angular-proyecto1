@@ -15,7 +15,7 @@
         <td>{{cliente.fecha_nacimiento | date:'dd/MM/yyyy'}}</td>
         <td>{{cliente.cp}}</td>
         <td>
-            <button routerLink="/formulario">E</button>
+            <button routerLink="/formulario/{{cliente.id}}">E</button>
             <button (click)="delete(cliente)">B</button>
         </td>
     </tr>
