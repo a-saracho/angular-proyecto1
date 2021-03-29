@@ -1,0 +1,18 @@
+{
+  "clientes": [
+    { 
+      "id": 1,
+      "nombre": "Luisito",
+      "apellido": "Luisitez",
+      "fecha_nacimiento": "1980/10/15",
+      "cp": 48001 
+    },
+    { 
+      "id": 2,
+      "nombre": "Paquito",
+      "apellido": "Paquitez",
+      "fecha_nacimiento": "1990/02/20",
+      "cp": 48010 
+    }
+  ]
+}

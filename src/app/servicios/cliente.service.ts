@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cliente } from '../cliente';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,15 @@ export class ClienteService {
     { id: 2, nombre: 'Paquito', apellido: 'Paquitez', fecha_nacimiento: new Date('1990/02/20'), cp: 48010 },
   ];
 
+  private clientesUrl = 'http://localhost:3000/clientes';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor( private http: HttpClient ) {
+  }
+
   obtenerClientes(): Observable<Cliente[]> {
-    return of(this.clientes);
+    return this.http.get<Cliente[]>(this.clientesUrl);
   }
 }
