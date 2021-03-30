@@ -1,5 +1,7 @@
+import { MensajeService } from 'src/app/servicios/mensaje.service';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cliente } from '../cliente';
 
@@ -19,11 +21,13 @@ export class ClienteService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor( private http: HttpClient ) {
+  constructor( private http: HttpClient, private mensajeService: MensajeService ) {
   }
 
   getClientes(): Observable<Cliente[]> {
-    return this.http.get<Cliente[]>(this.clientesUrl);
+    return this.http.get<Cliente[]>(this.clientesUrl).pipe(
+      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros'))
+    );
   }
 
   getCliente(id: number): Observable<Cliente> {

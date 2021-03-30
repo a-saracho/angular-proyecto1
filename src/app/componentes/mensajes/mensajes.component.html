@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let mensaje of mensajeService.mensajes">
+        {{mensaje}}
+    </li>
+</ul>
+<button (click)="mensajeService.limpiar()">Limpiar mensajes</button>
