@@ -4,7 +4,7 @@
     font-family: sans-serif;
 }
 
-button {
+button, input[type=button] {
     padding: 5px 8px;
     color: #fff;
     background-color: dimgrey;
