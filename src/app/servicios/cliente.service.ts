@@ -26,26 +26,64 @@ export class ClienteService {
 
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.clientesUrl).pipe(
-      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros'))
+      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros')),
+      catchError( (err, caught) => {
+        this.mensajeService.agregar('Ha habido un problema al obtener los registros');
+        this.mensajeService.agregar(err.message);
+        console.error(err, caught);
+        return [];
+      })
     );
   }
 
   getCliente(id: number): Observable<Cliente> {
-    return this.http.get<Cliente>(this.clientesUrl + id);
+    return this.http.get<Cliente>(this.clientesUrl + id).pipe(
+      tap(() => this.mensajeService.agregar('Se han obtenido el registro con id ' + id)),
+      catchError( (err, caught) => {
+        this.mensajeService.agregar('Ha habido un problema al obtener el registro con id ' + id);
+        this.mensajeService.agregar(err.message);
+        console.error(err, caught);
+        return [];
+      })
+    );
   }
 
   insertarCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.clientesUrl, cliente);
+    return this.http.post<Cliente>(this.clientesUrl, cliente).pipe(
+      tap(() => this.mensajeService.agregar('Se ha creado el registro')),
+      catchError( (err, caught) => {
+        this.mensajeService.agregar('Ha habido un problema al crear el registro');
+        this.mensajeService.agregar(err.message);
+        console.error(err, caught);
+        return [];
+      })
+    );
   }
 
   modificarCliente(cliente: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>(this.clientesUrl + cliente.id, cliente);
+    return this.http.put<Cliente>(this.clientesUrl + cliente.id, cliente).pipe(
+      tap(() => this.mensajeService.agregar('Se ha modificado el registro con id ' + cliente.id)),
+      catchError( (err, caught) => {
+        this.mensajeService.agregar('Ha habido un problema al modificar el registro con id ' + cliente.id);
+        this.mensajeService.agregar(err.message);
+        console.error(err, caught);
+        return [];
+      })
+    );
   }
 
   deleteCliente(cliente: number | Cliente): Observable<Cliente> {
     const id = typeof cliente === 'number' ? cliente : cliente.id;
     const url = `${this.clientesUrl}/${id}`;
 
-    return this.http.delete<Cliente>(url, this.httpOptions);
+    return this.http.delete<Cliente>(url, this.httpOptions).pipe(
+      tap(() => this.mensajeService.agregar('Se ha eliminado el registro con id ' + id)),
+      catchError( (err, caught) => {
+        this.mensajeService.agregar('Ha habido un problema al eliminar el registro con id ' + id);
+        this.mensajeService.agregar(err.message);
+        console.error(err, caught);
+        return [];
+      })
+    );
   }
 }
