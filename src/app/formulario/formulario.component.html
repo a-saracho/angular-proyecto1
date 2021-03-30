@@ -16,7 +16,7 @@
         <input type="number" min="0" id="cp" name="cp" placeholder="Código postal" [(ngModel)]="cliente.cp">
     </div>
     <div>
-        <button>Guardar</button>
+        <button (click)="aceptar()">Guardar</button>
         <button routerLink="/listado">Volver</button>
     </div>
 </form>

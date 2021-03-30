@@ -1,7 +1,9 @@
 import { Cliente } from './../cliente';
 import { ClienteService } from './../servicios/cliente.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
+const CLIENTE_VACIO = {id : 0, nombre : '', apellido: '', fecha_nacimiento : new Date(), cp : 0};
 
 @Component({
   selector: 'app-formulario',
@@ -10,19 +12,43 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormularioComponent implements OnInit {
 
-  cliente: Cliente = {id : 0, nombre : '', apellido: '', fecha_nacimiento : new Date(), cp : 0};
+  cliente: Cliente = CLIENTE_VACIO;
+  id = 0;
 
-  constructor(private router: ActivatedRoute, private clienteService: ClienteService) { }
+  constructor(private router: ActivatedRoute, private route: Router, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    const id = +this.router.snapshot.paramMap.get('id');
+    this.id = +this.router.snapshot.paramMap.get('id');
 
-    if (id)
+    if (this.id)
     {
-      this.clienteService.getCliente(id).subscribe(
+      this.clienteService.getCliente(this.id).subscribe(
         cliente => this.cliente = cliente
       );
     }
+    else
+    {
+      this.cliente = CLIENTE_VACIO;
+    }
+  }
+
+  aceptar(): void {
+    console.log(this.cliente);
+
+    if (this.id) {
+      this.clienteService.modificarCliente(this.cliente).subscribe(
+        () => this.volverAListado()
+      );
+    } else {
+      this.clienteService.insertarCliente(this.cliente).subscribe(
+        this.volverAListado.bind(this)
+      );
+    }
+  }
+
+  volverAListado(): void {
+    // TODO: implementar navegación https://angular.io/guide/router#specifying-a-relative-route
+    this.route.navigate(['listado']);
   }
 
 }

@@ -30,6 +30,13 @@ export class ClienteService {
     return this.http.get<Cliente>(this.clientesUrl + id);
   }
 
+  insertarCliente(cliente: Cliente): Observable<Cliente> {
+    return this.http.post<Cliente>(this.clientesUrl, cliente);
+  }
+
+  modificarCliente(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(this.clientesUrl + cliente.id, cliente);
+  }
 
   deleteCliente(cliente: number | Cliente): Observable<Cliente> {
     const id = typeof cliente === 'number' ? cliente : cliente.id;
