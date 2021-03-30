@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 import { FormularioComponent } from './formulario.component';
 
@@ -8,7 +10,8 @@ describe('FormularioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormularioComponent ]
+      declarations: [ FormularioComponent ],
+      imports: [ HttpClientModule, AppRoutingModule ],
     })
     .compileComponents();
   });
