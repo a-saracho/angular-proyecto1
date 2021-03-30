@@ -1,9 +1,9 @@
-import { MensajeService } from 'src/app/servicios/mensaje.service';
+import { MensajeService } from 'src/app/servicios/mensaje/mensaje.service';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Cliente } from '../cliente';
+import { Cliente } from '../../cliente';
 
 
 @Injectable({
