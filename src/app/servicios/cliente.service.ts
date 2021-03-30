@@ -26,10 +26,10 @@ export class ClienteService {
 
   getClientes(): Observable<Cliente[]> {
     return this.http.get<Cliente[]>(this.clientesUrl).pipe(
-      tap(() => this.mensajeService.agregar('Se han obtenido todos los registros')),
+      tap(() => this.mensajeService.agregar('success', 'Se han obtenido todos los registros')),
       catchError( (err, caught) => {
-        this.mensajeService.agregar('Ha habido un problema al obtener los registros');
-        this.mensajeService.agregar(err.message);
+        this.mensajeService.agregar('error', 'Ha habido un problema al obtener los registros');
+        this.mensajeService.agregar('error', err.message);
         console.error(err, caught);
         return [];
       })
@@ -38,10 +38,10 @@ export class ClienteService {
 
   getCliente(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(this.clientesUrl + id).pipe(
-      tap(() => this.mensajeService.agregar('Se han obtenido el registro con id ' + id)),
+      tap(() => this.mensajeService.agregar('success', 'Se han obtenido el registro con id ' + id)),
       catchError( (err, caught) => {
-        this.mensajeService.agregar('Ha habido un problema al obtener el registro con id ' + id);
-        this.mensajeService.agregar(err.message);
+        this.mensajeService.agregar('error', 'Ha habido un problema al obtener el registro con id ' + id);
+        this.mensajeService.agregar('error', err.message);
         console.error(err, caught);
         return [];
       })
@@ -50,10 +50,10 @@ export class ClienteService {
 
   insertarCliente(cliente: Cliente): Observable<Cliente> {
     return this.http.post<Cliente>(this.clientesUrl, cliente).pipe(
-      tap(() => this.mensajeService.agregar('Se ha creado el registro')),
+      tap(() => this.mensajeService.agregar('success', 'Se ha creado el registro')),
       catchError( (err, caught) => {
-        this.mensajeService.agregar('Ha habido un problema al crear el registro');
-        this.mensajeService.agregar(err.message);
+        this.mensajeService.agregar('error', 'Ha habido un problema al crear el registro');
+        this.mensajeService.agregar('error', err.message);
         console.error(err, caught);
         return [];
       })
@@ -62,10 +62,10 @@ export class ClienteService {
 
   modificarCliente(cliente: Cliente): Observable<Cliente> {
     return this.http.put<Cliente>(this.clientesUrl + cliente.id, cliente).pipe(
-      tap(() => this.mensajeService.agregar('Se ha modificado el registro con id ' + cliente.id)),
+      tap(() => this.mensajeService.agregar('success', 'Se ha modificado el registro con id ' + cliente.id)),
       catchError( (err, caught) => {
-        this.mensajeService.agregar('Ha habido un problema al modificar el registro con id ' + cliente.id);
-        this.mensajeService.agregar(err.message);
+        this.mensajeService.agregar('error', 'Ha habido un problema al modificar el registro con id ' + cliente.id);
+        this.mensajeService.agregar('error', err.message);
         console.error(err, caught);
         return [];
       })
@@ -77,10 +77,10 @@ export class ClienteService {
     const url = `${this.clientesUrl}/${id}`;
 
     return this.http.delete<Cliente>(url, this.httpOptions).pipe(
-      tap(() => this.mensajeService.agregar('Se ha eliminado el registro con id ' + id)),
+      tap(() => this.mensajeService.agregar('success', 'Se ha eliminado el registro con id ' + id)),
       catchError( (err, caught) => {
-        this.mensajeService.agregar('Ha habido un problema al eliminar el registro con id ' + id);
-        this.mensajeService.agregar(err.message);
+        this.mensajeService.agregar('error', 'Ha habido un problema al eliminar el registro con id ' + id);
+        this.mensajeService.agregar('error', err.message);
         console.error(err, caught);
         return [];
       })
