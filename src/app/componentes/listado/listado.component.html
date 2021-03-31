@@ -1,22 +1,27 @@
-<button routerLink="/formulario">Crear cliente</button>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Fecha Nacimiento</th>
-        <th>CP</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let cliente of clientes; let i = index" [ngClass]="{even: i%2 == 0, odd: i%2 == 1 }">
-        <td>{{cliente.id}}</td>
-        <td>{{cliente.nombre}}</td>
-        <td>{{cliente.apellido}}</td>
-        <td>{{cliente.fecha_nacimiento | date:'dd/MM/yyyy'}}</td>
-        <td>{{cliente.cp}}</td>
-        <td>
-            <button routerLink="/formulario/{{cliente.id}}">E</button>
-            <button (click)="delete(cliente)">B</button>
-        </td>
-    </tr>
+<button class="btn btn-primary" routerLink="/formulario">Crear cliente</button>
+<table class="table table-striped table-hover table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>CP</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes; let i = index" [ngClass]="{even: i%2 == 0, odd: i%2 == 1 }">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellido}}</td>
+            <td>{{cliente.fecha_nacimiento | date:'dd/MM/yyyy'}}</td>
+            <td>{{cliente.cp}}</td>
+            <td>
+                <button class="btn btn-primary" routerLink="/formulario/{{cliente.id}}">Editar</button>
+                <button class="btn btn-danger" (click)="delete(cliente)">Borrar</button>
+            </td>
+        </tr>
+    </tbody>
+    
 </table>

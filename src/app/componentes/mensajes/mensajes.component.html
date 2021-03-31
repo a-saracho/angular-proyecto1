@@ -1,6 +1,9 @@
-<ul>
-    <li *ngFor="let mensaje of mensajeService.mensajes" class="{{mensaje.tipo}}"> <!-- con ngClass [ngClass]="{success: mensaje.tipo == 'success', warning: mensaje.tipo == 'warning', error: mensaje.tipo == 'error' }"-->
+<!--<ul>
+    <li *ngFor="let mensaje of mensajeService.mensajes" class="{{mensaje.tipo}}">  con ngClass [ngClass]="{success: mensaje.tipo == 'success', warning: mensaje.tipo == 'warning', error: mensaje.tipo == 'error' }"
         {{mensaje.tipo | titlecase}}: {{mensaje.texto}}
     </li>
-</ul>
-<button (click)="mensajeService.limpiar()">Limpiar mensajes</button>
+</ul>-->
+<div *ngFor="let mensaje of mensajeService.mensajes" class="alert alert-{{mensaje.tipo}}" role="alert">
+    {{mensaje.tipo | titlecase}}: {{mensaje.texto}}
+</div>
+<button class="btn btn-primary" (click)="mensajeService.limpiar()">Limpiar mensajes</button>

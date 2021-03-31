@@ -1,22 +1,32 @@
 <form>
-    <div>
-        <label for="nombre">Nombre </label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
+    <div class="form-group row">
+        <label for="nombre" class="col-sm-2 col-form-label">Nombre </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre">
+        </div>
     </div>
-    <div>
-        <label for="apellido">Apellido </label>
-        <input type="text" id="apellido" name="apellido" placeholder="Apellido" [(ngModel)]="cliente.apellido">
+    <div class="form-group row">
+        <label for="apellido" class="col-sm-2 col-form-label">Apellido </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" [(ngModel)]="cliente.apellido">
+        </div>
     </div>
-    <div>
-        <label for="fecha_nacimiento">Fecha de nacimiento </label>
-        <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/yyyy" [ngModel]="cliente.fecha_nacimiento | date:'dd/MM/yyyy'">
+    <div class="form-group row">
+        <label for="fecha_nacimiento" class="col-sm-2 col-form-label">Fecha de nacimiento </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/yyyy" [ngModel]="cliente.fecha_nacimiento | date:'dd/MM/yyyy'">
+        </div>
     </div>
-    <div>
-        <label for="cp">Código postal </label>
-        <input type="number" min="0" id="cp" name="cp" placeholder="Código postal" [(ngModel)]="cliente.cp">
+    <div class="form-group row">
+        <label for="cp" class="col-sm-2 col-form-label">Código postal </label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" min="0" id="cp" name="cp" placeholder="Código postal" [(ngModel)]="cliente.cp">
+        </div>
     </div>
-    <div>
-        <input type="button" (click)="aceptar()" value="Guardar">
-        <input type="button" routerLink="/listado" value="Volver">
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <input class="btn btn-primary" type="button" (click)="aceptar()" value="Guardar">
+            <input class="btn btn-warning" type="button" routerLink="/listado" value="Volver">
+        </div>
     </div>
 </form>
