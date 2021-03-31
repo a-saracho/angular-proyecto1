@@ -1,4 +1,4 @@
 export interface Mensaje {
-    tipo: string;
+    tipo: 'success' | 'warning' | 'danger';
     texto: string;
   }

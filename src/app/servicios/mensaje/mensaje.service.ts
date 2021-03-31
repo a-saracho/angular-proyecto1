@@ -8,8 +8,8 @@ export class MensajeService {
 
   mensajes: Mensaje[] = [];
 
-  agregar(tipo: string, texto: string): void {
-    this.mensajes.push({tipo, texto});
+  agregar(mensaje: Mensaje): void {
+    this.mensajes.push(mensaje);
   }
 
   limpiar(): void {
