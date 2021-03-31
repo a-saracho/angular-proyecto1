@@ -14,3 +14,7 @@ button, input[type=button] {
     cursor: pointer;
 }
 */
+
+.btn {
+    margin: 3px;
+}
